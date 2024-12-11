@@ -1,0 +1,55 @@
+# schema.yml
+
+ version: 2
+
+ sources:
+   - name: raw
+     schema: gz_raw_data
+     tables:
+       - name: sales
+         identifier: raw_gz_sales
+         description: sales of Greenweez / we have on row per product_id found in each orders_id
+         # Freshness testing 
+         loaded_at_field: "CAST(date_date AS TIMESTAMP)"
+         freshness:
+           warn_after: {count: 90, period: day}
+         columns:
+           - name: date_date
+             description: date of purchase
+           - name: orders_id
+             description: order identification number
+           - name: pdt_id
+             description: product identification number
+           - name: revenue
+             description: revenue an order generated
+           - name: quantity
+             description: number of products in order
+         tests:
+            - unique:
+                column_name: "(orders_id || '-' || pdt_id)"
+       - name: product
+         identifier: raw_gz_product
+         description: products of Greenweez
+         columns:
+           - name: products_id
+             description: product identification number
+             tests:
+               - unique
+               - not_null  
+           - name: purchse_price
+             description: purchase price of product
+       - name: ship
+         identifier: raw_gz_ship
+         description: shipping info on orders for Greenweez
+         columns:
+           - name: orders_id
+             description: order identification number
+             tests:
+               - unique
+               - not_null  
+           - name: shipping_fee
+             description: shipping fee for order
+           - name: logcost
+             description: logistics cost of order
+           - name: ship_cost
+             description: shipping cost of order
