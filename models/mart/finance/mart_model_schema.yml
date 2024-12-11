@@ -1,0 +1,24 @@
+version: 2
+
+models:
+    - name: finance_campaign_day
+      columns:
+          - name: date_date
+            tests:
+              - unique
+          - name: ads_margin
+          - name: average_basket
+          - name: operational_margin
+          - name: ads_costs
+          - name: ads_impression
+          - name: ads_clicks
+          - name: quanitity
+          - name: revenue
+          - name: purchase_cost
+          - name: margin
+          - name: shipping_fee
+          - name: logcost
+          - name: ship_cost
+    - name: finance_days
+
+                  
