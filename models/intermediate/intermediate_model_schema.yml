@@ -20,7 +20,7 @@ models:
   - name: int_orders_margin
   - name: int_orders_operational
   - name: int_sales_margin
-  - name: int_camoaigns_day
+  - name: int_campaigns_day
     columns:
       - name: date_date
         tests:
