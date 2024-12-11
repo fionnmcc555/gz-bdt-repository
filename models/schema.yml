@@ -56,14 +56,6 @@
        - name: adwords
          identifier: raw_gz_adwords
          description: adwords data
-         columns:
-           - name: date_date
-           - name: paid_source
-           - name: campaign_key
-           - name: campgn_name
-           - name: ads_cost
-           - name: impression
-           - name: click
        - name: bing
          identifier: raw_gz_bing
          description: bing data
